@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="cong.wang@123.151.101.33:20022 password (5)" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="cong.wang@123.151.101.33:20022 password">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath path="/data" />
+            <excludedPath path="/checkpoint-284.pth.tar" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="cong.wang@123.151.101.33:20022 password (5)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/mnt/nas/algorithm/cong.wang/projects/spikingformer" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
