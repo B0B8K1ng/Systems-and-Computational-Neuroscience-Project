@@ -174,9 +174,9 @@ $$
 $$
 X_l=SMLP(SSA(X_{l-1})+X_{l-1})+(SSA(X_{l-1})+X_{l-1})
 $$
-​	
 
-​	每个 Spiking Transformer Block 的输入为上一块的输出，最终通过多层堆叠，逐步提取更高阶的特征。
+
+每个 Spiking Transformer Block 的输入为上一块的输出，最终通过多层堆叠，逐步提取更高阶的特征。
 
 ### 3.3 Spike-driven Transformer 结果展示与评价
 
