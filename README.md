@@ -6,7 +6,7 @@
 |:-----|:----------------------------------------------------------------------------|
 | 王聪   | SpikingFormer的报告与复现<br/>SpikingResformer的报告（文章简介和核心模块）与复现代码研究               |
 | 聂渡骏  | MST的报告与复现<br/>SpikingResformer的报告（结果展示与评价）与复现训练                             |
-| 李庚晟  | 设计并实现SCNN-based CIFAR-10 Classifier<br/>复现并训练Spike-driven Transformer |
+| 李庚晟  | 设计、实现基于 SpikingJelly 的 CIFAR-10 分类器<br/>复现、训练、测试Spike-driven Transformer |
 | 夏天   | 报告的开头与总结<br/>报告整体调整                                                           |
 | 赵灿阳  | Spike-driven Transformer 复现与学习部分<br/>基于 SpikingJelly 的 CIFAR-10 分类器构建部分报告<br/>Spike-driven Transformer复现部分报告                                                                            |
 ## 一、研究背景
