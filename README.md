@@ -1,6 +1,14 @@
 
 # SNN项目复现与探索研究报告
+**团队分工**
 
+| Name | 分工                                                                          |
+|:-----|:----------------------------------------------------------------------------|
+| 王聪   | SpikingFormer的报告与复现<br/>SpikingResformer的报告（文章简介和核心模块）与复现代码研究               |
+| 聂渡骏  | MST的报告与复现<br/>SpikingResformer的报告（结果展示与评价）与复现训练                             |
+| 李庚晟  | 设计并实现SCNN-based CIFAR-10 Classifier<br/>复现并训练Spike-driven Transformer |
+| 夏天   | 报告的开头与总结<br/>报告整体调整                                                           |
+| 赵灿阳  | Spike-driven Transformer 复现与学习部分<br/>基于 SpikingJelly 的 CIFAR-10 分类器构建部分报告<br/>Spike-driven Transformer复现部分报告                                                                            |
 ## 一、研究背景
 
 ​	随着深度学习的发展，传统的人工神经网络（Artificial Neural Networks, ANNs）在多个领域内取得了显著成效，如图像分类、自然语言处理等。然而，尽管ANN网络表现优异，但在实际应用中仍然面临着高能耗的问题。由于ANN模型通常需要大量的乘加运算以及频繁地数据存储和访问，这些操作导致了巨大的能量消耗和计算资源需求，在大规模网络的情况下这种消耗尤为明显。
