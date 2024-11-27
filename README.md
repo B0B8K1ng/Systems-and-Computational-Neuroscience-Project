@@ -123,8 +123,8 @@ $$
 
 ​	Spiking Transformer Block 是 Spikingformer 的核心模块，用于提取输入脉冲序列的局部和全局特征。它包括以下两个主要部分：
 
-1. **多头自注意力机制 (Spiking Multi-head Self-Attention) **：在脉冲事件间建模序列关系。
-2. **脉冲前馈网络 (Spiking Feed-Forward Network) **：对提取的上下文特征进行进一步增强。
+1. 多头自注意力机制 (Spiking Multi-head Self-Attention) ：在脉冲事件间建模序列关系。
+2. 脉冲前馈网络 (Spiking Feed-Forward Network) ：对提取的上下文特征进行进一步增强。
 
 ##### 1）Spiking Multi-head Self-Attention (SSA)
 
@@ -144,12 +144,18 @@ $$
 ##### 2）Spiking Feed-Forward Network (SMLP)：
 
 ​	SMLP包括两个脉冲卷积嵌入模块（SPE），表达为：
+
+
 $$
 X_{MLP}=ReLU(ConvBN_1(X))+ConvBN_2(ReLU(X))
 $$
+
+
 **残差连接**：
 
 ​	为了保证脉冲数据的连贯性，Spiking Transformer Block 通过残差连接计算：
+
+
 $$
 X'=SSA(X)+X
 $$
@@ -158,12 +164,18 @@ $$
 X_{out}=SMLP(X')+X'
 $$
 
+
+
 **组合**：
 
 ​	Spiking Transformer Block的最终输出为：
+
+
 $$
 X_l=SMLP(SSA(X_{l-1})+X_{l-1})+(SSA(X_{l-1})+X_{l-1})
 $$
+​	
+
 ​	每个 Spiking Transformer Block 的输入为上一块的输出，最终通过多层堆叠，逐步提取更高阶的特征。
 
 ### 3.3 Spike-driven Transformer 结果展示与评价
@@ -263,6 +275,8 @@ $$
 #### 5.2.1 双脉冲自注意力机制 （DSSA）
 
 ​	DSSA使用双脉冲变换（Dual Spike Transformation, DST），定义DST如下：
+
+
 $$
 DST(X, Y; f(\cdot))=Xf(Y)=XYW,
 $$
@@ -271,9 +285,13 @@ $$
 DST_T(X, Y; f(\cdot))=Xf(Y)^T=XW^TY^T.
 $$
 
+
+
 在公式 (10) 中， $X\in\{0, 1\}^{T\times p\times m}$ 和 $Y\in\{0, 1\}^{T\times m\times q}$ 代表双脉冲输入，$T$时时间步， $p, m, q$ 表示对应维度， $f(\cdot)$ 是一个对于$Y$的线性变换， $W\in \mathbb{R}^{q\times q}$ 是权重矩阵。在公式 (11) 中，$Y\in\{0, 1\}^{T\times q\times m}$， $W\in \mathbb{R}^{m\times m}$ 。
 
 ​	基于DST，能够进一步计算DSSA的注意力地图：
+
+
 $$
 AttnMap(X)=SN(DST_T(X, X;f(\cdot))*c_1),
 $$
@@ -282,12 +300,18 @@ $$
 f(X)=BN(Conv_p(X)),
 $$
 
+
+
 其中 $X\in \{0,1\}^{T\times HW\times d}$ 是脉冲输入， $H$ 和 $W$ 分别是输入的高度和宽度， $d$ 表示编码的embedding的维度， $BN(\cdot)$ 是指批归一化层 $Conv_p(\cdot)$ 表示步长为 $p$ 的一个 $p\times p$ 的卷积， $c_1$ 是尺度因子。
 
 ​	进一步的，使用脉冲注意力地图，DSSA可以表达为：
+
+
 $$
 DSSA(X)=SN(DST(AttnMap(X), X; f(\cdot))*c_2),
 $$
+
+
 其中， $c_2$ 是尺度因子。
 
 #### 5.2.2 Spiking Resformer Block
@@ -297,14 +321,20 @@ $$
 1）**多头卷积脉冲自注意力**
 
 ​	在MDHSSA中，首先将DST中的线性变换转成 $h$ 个任务头，然后在每个任务头上执行DSSA并将其拼接到一起。最后，使用基于点的卷积来将拼接的特征投影从而将不同任务头的特征融合在一起。MHDSSA表达如下：
+
+
 $$
 MHDSSA(X)=BN(Conv_1([DSSA_i(SN(X))]_{i=1}^h))
 $$
+
+
 其中 $[...]$ 表示concat拼接操作， $Conv_1$ 表示点向卷积。
 
 2）**组向的脉冲前馈网络**
 
 ​	脉冲前馈网络（spiking feed-forward network, SFFN）由两个带有批归一化的线性层和脉冲神经激活组成。基于SFFN，在两个线性层之间插入 $3\times 3$ 的带有残差连接的卷积层，使得SFFN能够提取局部特征。为了减少参数量和计算量，使用组向卷积并将每64个channels设为1个组。组向脉冲前向网络表达如下：
+
+
 $$
 FFL_i(X)=BN(Conv_1(SN(X))), i=1,2
 $$
@@ -317,9 +347,13 @@ $$
 GWSFFN(X)=FFL_2(GWL(FFL_1(X))).
 $$
 
+
+
 其中  $FFL_i(\cdot), i=1,2$  表示前馈层， $Conv_1(\cdot)$ 是点向卷积， $GWL(\cdot)$ 是组向卷积层， $GWConv(\cdot)$ 表示组向卷积。
 
 ​	基于以上的MHDSSA模块和GWSFFN模块，spiking resformer block可以表达为：
+
+
 $$
 Y_i=MHDSSA(X_i)+X_i
 $$
@@ -327,6 +361,8 @@ $$
 $$
 X_{i+1}=GWSFFN(Y_i)+Y_i
 $$
+
+
 
 其中  $Y_i$  表示MHDSSA模块在第 i 个spiking resformer block中输出的特征。
 
