@@ -412,32 +412,52 @@ $$
 
 #### 6.2.1 Spiking Neuron Model
 
-​	对于 ANN输入$a^{l-1}$层$l$通过线性变换矩阵$W^l$和非线性激活函数$f(\cdot)$映射到输出$a^l$，即$(l=1,2,3,...,L)$：
+​	对于 ANN输入$a^{l-1}$层$l$通过线性变换矩阵 $W^l$ 和非线性激活函数 $f(\cdot)$ 映射到输出 $a^l$ ，即 $(l=1,2,3,...,L)$ ：
+
+
 $$
 a^l=f(W^la^{l-1})
 $$
-其中$f(\cdot)$通常被设置为ReLU激活函数。
+
+
+其中 $f(\cdot)$ 通常被设置为ReLU激活函数。
 
 ​	在 SNN 中，Integrate-and-Fire （IF） 脉冲神经元模型通常用于 ANN 到 SNN 的转换。IF 模型的动力学描述如下：
+
+
 $$
 v^l(t)=v^l(t-1)+W^l\theta^{l-1}s^{l-1}(t)-\theta^ls^l(t)
 $$
-其中$v(t)$表示在时间步 t 时 l 层中神经元的膜电位，对应于线性变换矩阵 W 、阈值 θ 和前一层 l − 1 中神经元的二进制输出Spike，表示为 s（t）。s（t） 定义如下：
+
+
+其中 $v(t)$ 表示在时间步 t 时 l 层中神经元的膜电位，对应于线性变换矩阵 W 、阈值 θ 和前一层 l − 1 中神经元的二进制输出Spike，表示为 s（t）。s（t） 定义如下：
+
+
 $$
 s^l(t)=H(u^l(t)-\theta^l)
 $$
-其中$ u^l(t) = v^l(t − 1) + W^lθ^{l-1}s^{l-1}(t) $表示在时间步 t 触发尖峰之前神经元的膜电位，$H(\cdot)$表示 Heaviside 阶跃函数。每当膜电位$u^l(t)$ 超过阈值 $\theta^l$时，神经元就会产生输出尖峰，并通过减去阈值来重置膜电位以减少信息损失。
+
+
+其中 $u^l(t) = v^l(t − 1) + W^lθ^{l-1}s^{l-1}(t)$ 表示在时间步 t 触发尖峰之前神经元的膜电位，$H(\cdot)$表示 Heaviside 阶跃函数。每当膜电位 $u^l(t)$ 超过阈值  $\theta^l$ 时，神经元就会产生输出尖峰，并通过减去阈值来重置膜电位以减少信息损失。
 
 #### 6.2.2 ANN-to-SNN conversion
 
 ​	为了实现 ANN-SNN 转换，在 ANN 中模拟神经元的整流线性单元 （ReLU） 激活与 SNN 中Spike神经元的放电速率或突触后电位之间建立了关系。这是通过将时间步长 1 的方程两侧除以T，得到以下方程：
+
+
 $$
 \frac{v^l(T)-v^l(0)}{T}=\frac{\sum_{t=1}^TW^l\theta^{l-1}s^{l-1}(t)}{T}-\frac{\sum_{t=1}^{T}\theta^ls^l(t)}{T}
 $$
-​	$\phi^l(T)$和$\phi^{l-1}(T)$通过定义$\phi^l(T)=\frac{\sum_{t=1}^T\theta^ls^l(t)}{T}$作为平均突触后电位建立：
+​	
+
+​	$\phi^l(T)$ 和 $\phi^{l-1}(T)$ 通过定义 $\phi^l(T)=\frac{\sum_{t=1}^T\theta^ls^l(t)}{T}$ 作为平均突触后电位建立：
+
+
 $$
 \phi^l(T)=W^l\phi^{l-1}(T)-\frac{v^l(T)-v^l(0)}{T}
 $$
+​	
+
 ​	方程之间的等价性仅在 T 趋于无穷大时成立，从而导致转换误差。为了解决这个问题，论文在 ANN 中用量化剪辑地板移位 （QCFS）函数替换了 ReLU 激活函数。
 
 ![mst_ann](figs/mst_ann.png)
