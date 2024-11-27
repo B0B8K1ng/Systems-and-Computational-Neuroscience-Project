@@ -15,17 +15,9 @@
 
 ### 2.1 实验目的及参数、结构
 
-​	为了学习和探索SNN，我们期望通过搭建一个SNN分类器，体验其在图像分类任务中的性能与能耗表现，比较其与传统神经网络不同之处来初步了解SNN包括脉冲发放机制、脉冲神经元模型实现，以及脉冲驱动计算在内的基本工作原理。
+​	为了学习和探索SNN，我们期望通过搭建一个SNN分类器，体验其在图像分类任务中的性能表现，比较其与传统神经网络不同之处来初步了解SNN包括脉冲发放机制、脉冲神经元模型实现，以及脉冲驱动计算在内的基本工作原理。
 
-​	本次实验中，我们选用 SpikingJelly 框架和 CIFAR-10 数据集，利用卷积的 SNN 架构，将激活函数替换为能体现脉冲特性的IF（Integrate-and-Fire）神经元函数，再通过代理梯度方法训练神经网络。经检验，该网络能处理时间相关信息并有较高准确率（90.31%）。
-
-​	网络结构组成：
-```python
-1. Multiple ConvBlock layers (Conv2D + BatchNorm + IF Neuron)
-2. MaxPooling layers for dimensionality reduction
-3. Fully connected layers for classification
-4. Uses IF (Integrate-and-Fire) neurons with ATan surrogate gradient
-```
+​	本次实验中，我们选用 SpikingJelly 框架和 CIFAR-10 数据集，利用卷积的 SNN 架构，将激活函数替换为能体现脉冲特性的IF（Integrate-and-Fire）神经元函数，再通过代理梯度方法训练神经网络。经检验，该网络在测试集上有着较高的准确率（90.31%）。
 
 ​	模型参数：
 ```python
@@ -34,6 +26,14 @@
 3. Optimizer: Adam
 4. Learning rate scheduler: CosineAnnealing
 5. Batch size: 128
+```
+
+​	网络结构组成：
+```python
+1. Multiple ConvBlock layers (Conv2D + BatchNorm + IF Neuron)
+2. MaxPooling layers for dimensionality reduction
+3. Fully connected layers for classification
+4. Uses IF (Integrate-and-Fire) neurons with ATan surrogate gradient
 ```
 
 ​	整体架构：
