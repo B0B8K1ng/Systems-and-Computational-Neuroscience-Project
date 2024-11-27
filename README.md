@@ -98,7 +98,7 @@ Conv2d(in_channels, out_channels) -> BatchNorm2d(out_channels) -> IFNode(surroga
 1. **空间降维**：通过脉冲卷积层 (Spiking Conv Layer) 提取局部空间特征。
 2. **序列化**：将降维后的特征映射到序列表示。
 
-​	假设输入图像为 \( I \in \mathbb{R}^{H \times W \times C} \) ，通过 Spiking Tokenizer 处理后得到脉冲特征表示为 $X\in \mathbb{R}^{T \times N \times D}$，其中  $H$ 和  $W$  是输入图像的高和宽， $C$  是通道数， $T$  是脉冲的时间步长， $N$  是序列长度， $D$  是特征维度。
+​	假设输入图像为 $I \in \mathbb{R}^{H \times W \times C}$ ，通过 Spiking Tokenizer 处理后得到脉冲特征表示为 $X\in \mathbb{R}^{T \times N \times D}$，其中  $H$ 和  $W$  是输入图像的高和宽， $C$  是通道数， $T$  是脉冲的时间步长， $N$  是序列长度， $D$  是特征维度。
 
 ​	脉冲化卷积过程的公式如下： 
 
@@ -417,7 +417,7 @@ $$
 
 #### 6.2.1 Spiking Neuron Model
 
-​	对于 ANN输入$a^{l-1}$层$l$通过线性变换矩阵 $W^l$ 和非线性激活函数 $f(\cdot)$ 映射到输出 $a^l$ ，即 $(l=1,2,3,...,L)$ ：
+​	对于 ANN输入 $a^{l-1}$ 层 $l$ 通过线性变换矩阵 $W^l$ 和非线性激活函数 $f(\cdot)$ 映射到输出 $a^l$ ，即 $(l=1,2,3,...,L)$ ：
 
 
 $$
@@ -443,7 +443,7 @@ s^l(t)=H(u^l(t)-\theta^l)
 $$
 
 
-其中 $u^l(t) = v^l(t − 1) + W^lθ^{l-1}s^{l-1}(t)$ 表示在时间步 t 触发尖峰之前神经元的膜电位，$H(\cdot)$表示 Heaviside 阶跃函数。每当膜电位 $u^l(t)$ 超过阈值  $\theta^l$ 时，神经元就会产生输出尖峰，并通过减去阈值来重置膜电位以减少信息损失。
+其中 $u^l(t) = v^l(t − 1) + W^lθ^{l-1}s^{l-1}(t)$ 表示在时间步 t 触发尖峰之前神经元的膜电位， $H(\cdot)$ 表示 Heaviside 阶跃函数。每当膜电位 $u^l(t)$ 超过阈值  $\theta^l$ 时，神经元就会产生输出尖峰，并通过减去阈值来重置膜电位以减少信息损失。
 
 #### 6.2.2 ANN-to-SNN conversion
 
@@ -453,6 +453,7 @@ $$
 $$
 \frac{v^l(T)-v^l(0)}{T}=\frac{\sum_{t=1}^TW^l\theta^{l-1}s^{l-1}(t)}{T}-\frac{\sum_{t=1}^{T}\theta^ls^l(t)}{T}
 $$
+
 ​	
 
 ​	$\phi^l(T)$ 和 $\phi^{l-1}(T)$ 通过定义 $\phi^l(T)=\frac{\sum_{t=1}^T\theta^ls^l(t)}{T}$ 作为平均突触后电位建立：
@@ -461,6 +462,7 @@ $$
 $$
 \phi^l(T)=W^l\phi^{l-1}(T)-\frac{v^l(T)-v^l(0)}{T}
 $$
+
 ​	
 
 ​	方程之间的等价性仅在 T 趋于无穷大时成立，从而导致转换误差。为了解决这个问题，论文在 ANN 中用量化剪辑地板移位 （QCFS）函数替换了 ReLU 激活函数。
