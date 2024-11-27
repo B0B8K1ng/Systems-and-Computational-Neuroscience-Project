@@ -53,18 +53,18 @@ Conv2d(in_channels, out_channels) -> BatchNorm2d(out_channels) -> IFNode(surroga
 
 ![训练集loss](figs/figure2_3.jpg)
 
-<center style="color:#C0C0C0;text-decoration:underline">图1. CIFAR-10 数据集下SNN分类器训练损失</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图1. CIFAR-10 数据集下SNN分类器训练损失</div>
 
 <div align=center>
 <img src="figs/figure2_1.jpg" >
 </div>
 
-<center style="color:#C0C0C0;text-decoration:underline">图2. CIFAR-10 数据集下SNN分类器测试准确率</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图2. CIFAR-10 数据集下SNN分类器测试准确率</div>
 
 <div align=center>
 <img src="figs/figure2_2.jpg" >
 </div>
-<center style="color:#C0C0C0;text-decoration:underline">图3. CIFAR-10 数据集下SNN分类器测试损失</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图3. CIFAR-10 数据集下SNN分类器测试损失</div>
 
 
 ​	通过调研发现，SNN在小规模网络上能够实现高准确度，但在大规模深度神经网络中常会有准确率较低的缺陷。如何将SNN运用在大规模深度神经网络如Transformer上是一个热门方向。接下来，我们将通过学习与复现多篇该领域的最新工作探究这一问题。
@@ -79,7 +79,7 @@ Conv2d(in_channels, out_channels) -> BatchNorm2d(out_channels) -> IFNode(surroga
 
 ![image-20241125204811892](figs/framework.png)
 
-<center style="color:#C0C0C0;text-decoration:underline">图4. Spikingformer的整体流程框架图</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图4. Spikingformer的整体流程框架图</div>
 
 ​	Spikingformer 的整体架构是一个完全基于Transformer的纯脉冲神经网络 (SNN)，架构主要包括以下组件：
 
@@ -195,7 +195,7 @@ $$
 <img src="figs/table_spikingformer.png"/>
 </div>
 
-<center style="color:#C0C0C0;text-decoration:underline">表1. Spikingformer在ImageNet-1K数据集上的对比结果</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表1. Spikingformer在ImageNet-1K数据集上的对比结果</div>
 
 ​	在CIFAR10/CIFAR100数据集上训练时，设定输入尺寸为 $32\times32$ ，batch大小选择为64。实验的结果如表 2 所示。
 
@@ -203,7 +203,9 @@ $$
 <img src="figs/table2_spikingformer.png"/>
 </div>
 
-<center style="color:#C0C0C0;text-decoration:underline">表2. Spikingformer在CIFAR 10/100数据集上的对比结果</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">
+  表2. Spikingformer在CIFAR 10/100数据集上的对比结果
+</div>
 
 ​	此外还在CIFAR10-DVS和DVS128 Gesture数据集上进行了分类任务的测试，选定的输入尺寸都是 $128\times 128$ ，实验结果如表 3 所示。
 
@@ -266,13 +268,13 @@ $$
 ​	在ImageNet的表现：
 ![figure1](figs/figure4_1.png)
 
-<center style="color:#C0C0C0;text-decoration:underline">表4. Spiking—driven Transformer在ImageNet上的表现</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表4. Spiking—driven Transformer在ImageNet上的表现</div>
 ​	如表 4 所示，Spike-driven Transformer在相同参数下的性能显著优于对应的baseline模型（SpikFormer）。值得注意的是，将推演分辨率扩展到288×288后，Spike-driven Transformer-8-768的准确率达到77.07%。
 
 ​	在CIFAR-10/100、CIFAR10-DVS、DVS128 Gesture的表现：
 ![figure2](figs/figure4_2.png)
 
-<center style="color:#C0C0C0;text-decoration:underline">表5. Spiking—driven Transformer在CIFAR-10/100、CIFAR10-DVS、DVS128 Gesture的表现</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表5. Spiking—driven Transformer在CIFAR-10/100、CIFAR10-DVS、DVS128 Gesture的表现</div>
 ​	如表 5 所示，Spike-driven Transformer在Gesture（99.3%）和CIFAR-10（95.6%）上达到了SOTA表现，并在其他数据集上与SOTA的结果相当。
 
 ​	Spike-driven Transformer的实验结果表明，通过结合SNN和Transformer的优点，该模型能够在复杂任务中取得卓越的表现，同时显著降低能量消耗。具体来说，在ImageNet-1K数据集上，Spike-driven Transformer的能耗降低了约87倍，相较于传统Transformer取得了显著的进步。
@@ -285,7 +287,7 @@ $$
 
 ![image-20241126002443590](figs/spikingresformer_framework.png)
 
-<center style="color:#C0C0C0;text-decoration:underline">图5. SpikingResformer的结构</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图5. SpikingResformer的结构</div>
 
 ### 5.2 核心模块
 
@@ -385,15 +387,17 @@ $$
 
 ### 5.3 SpikingResformer结果展示与评价
 
-<img src="figs/resformer.png" alt="resformer" style="zoom: 67%;" />
+<div align=center>
+<img src="figs/resformer.png" width="80%" height="80%"/>
+</div>
 
-<center style="color:#C0C0C0;text-decoration:underline">图6. SpikingResformer与其他SOTA方法关于精度和能耗比较</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图6. SpikingResformer与其他SOTA方法关于精度和能耗比较</div>
 
 ​	从图 6 可以看出SpikingResformer的性能领先于其他SOTA方法。
 
 ![resformer_table1](figs/resformer_table1.png)
 
-<center style="color:#C0C0C0;text-decoration:underline">表6. SpikingResformer系列的架构。输出大小对应于输入大小224×224。Di和Hi分别是MHDSSA在阶段i的嵌入维度和头数。pi表示MHDSSA在阶段i中在DST中使用的pi×pi卷积。Ri和Gi分别表示阶段i中每组GWSFFN的扩展率和嵌入维度。</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表6. SpikingResformer系列的架构。输出大小对应于输入大小224×224。Di和Hi分别是MHDSSA在阶段i的嵌入维度和头数。pi表示MHDSSA在阶段i中在DST中使用的pi×pi卷积。Ri和Gi分别表示阶段i中每组GWSFFN的扩展率和嵌入维度。</div>
 
 ​	如表 6 所示，与基于ResNet的SNN类似，模型从由7×7卷积和3×3最大池化组成的stem架构开始，以预提取局部特征，并采用多级主干来生成多尺度特征图。
 
@@ -401,17 +405,18 @@ $$
 
 ![resformer_table2](figs/resformer_table2.png)
 
-<center style="color:#C0C0C0;text-decoration:underline">表7. 在ImageNet上评估。SOP表示对ImageNet验证数据进行图像推理的平均突触操作。Energy是对能源消耗的估计值。训练和推理的默认输入分辨率为 224×224。</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表7. 在ImageNet上评估。SOP表示对ImageNet验证数据进行图像推理的平均突触操作。Energy是对能源消耗的估计值。训练和推理的默认输入分辨率为 224×224。</div>
 
-![resformer_table3](figs/resformer_table3.png)
-
-<center style="color:#C0C0C0;text-decoration:underline">表8.ImageNet100数据集上的消融研究。所有变体的参数数量与SpikingResformer-S相当。</center>
+<div align=center>
+<img src="figs/resformer_table3.png" width="80%" height="80%"/>
+</div>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表8.ImageNet100数据集上的消融研究。所有变体的参数数量与SpikingResformer-S相当。</div>
 
 ​	如表 8 所示，与没有组级卷积层的变体相比，SpikingResformer-S的准确率提高了3.42%。这种差异突出了GWSFFN中按组卷积层的优势。
 
 ![resformer_table4](figs/resformer_table4.png)
 
-<center style="color:#C0C0C0;text-decoration:underline">表9. 在CIFAR10、CIFAR100、CIFAR10-DVS、DVSGesture数据集上迁移学习结果。</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表9. 在CIFAR10、CIFAR100、CIFAR10-DVS、DVSGesture数据集上迁移学习结果。</div>
 
 ​	如表 9 所示，SpikingResformer在CIFAR10数据集上实现了97.40%的准确率，在CIFAR100数据集上实现了85.98%的准确率，这是最先进的结果，在CIFAR10上比Spikformer的迁移学习结果高出0.37%，在CIFAR100上比Spikformer的迁移学习结果高出2.15%。
 
@@ -420,10 +425,11 @@ $$
 ### 6.1 文章简介
 
 ​	模型架构 MST 的概述如图 7 所示，其中 Swin Transformer被用作主干网络。为了将原始网络转换为完全脉冲方式，在训练阶段的每个线性或正则化层之后加入 QCFS 激活函数，在推理过程中将其替换为 Integrate-and-Fire（IF） 神经元，从而提高计算效率。
+<div align=center>
+<img src="figs/mst_overview.png" width="80%" height="80%"/>
+</div>
 
-![mst_overview](figs/mst_overview.png)
-
-<center style="color:#C0C0C0;text-decoration:underline">图7. MST概述。（a）Swin Transformer的模型架构示意图，这是Backbone。（b） 提出的Transformer模块的示意图，其中BN层取代了原来的LN层。（c）RSM方法的概念图，该方法涉及随机屏蔽输入Spike。（D-E）self-attention和MLP模块中的RSM方法。</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图7. MST概述。（a）Swin Transformer的模型架构示意图，这是Backbone。（b） 提出的Transformer模块的示意图，其中BN层取代了原来的LN层。（c）RSM方法的概念图，该方法涉及随机屏蔽输入Spike。（D-E）self-attention和MLP模块中的RSM方法。</div>
 
 ### 6.2 核心模块
 
@@ -479,39 +485,52 @@ $$
 
 ​	方程之间的等价性仅在 T 趋于无穷大时成立，从而导致转换误差。为了解决这个问题，论文在 ANN 中用量化剪辑地板移位 （QCFS）函数替换了 ReLU 激活函数。
 
-![mst_ann](figs/mst_ann.png)
+<div align=center>
+<img src="figs/mst_ann.png" width="80%" height="80%"/>
+</div>
 
-<center style="color:#C0C0C0;text-decoration:underline">图8. 分别是 BN 和 LN 的 SNN 模型的 （a） 激活后分布和 （b-c） 累积膜电位分布的图示。热图显示了 ANN 和 SNN（BN） 模型之间的相似分布，而 ANN 和 SNN（LN） 模型之间的广泛分布导致性能下降。</center>
+
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图8. 分别是 BN 和 LN 的 SNN 模型的 （a） 激活后分布和 （b-c） 累积膜电位分布的图示。热图显示了 ANN 和 SNN（BN） 模型之间的相似分布，而 ANN 和 SNN（LN） 模型之间的广泛分布导致性能下降。</div>
 
 ### 6.3 MST结果展示与评价
 
-<img src="figs/mst.png" alt="mst" style="zoom: 50%;" />
+<div align=center>
+<img src="figs/mst.png" width="60%" height="60%"/>
+</div>
 
-<center style="color:#C0C0C0;text-decoration:underline">图9. MST与其他SOTA方法关于精度和Time step的比较</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图9. MST与其他SOTA方法关于精度和Time step的比较</div>
 
 ​	如图 9 所示，MST的性能和其他SOTA  SNN模型关于top-1 acc和Time step比较。圆圈形状表示直接训练（DT），星星形状表示ANN-to-SNN方法，其中的标记大小对应到模型大小。实验结果表明，与其他SNN模型相比，提出的MST模型是有效的，且取得了更高的精度。
 
 ​	表 10 在 CIFAR10/100 和 ImageNet 数据集上全面比较了 MST 模型与当前的 SOTA SNN 模型。结果表明，静态数据集上的性能选项卡提议的 MST 模型在所有三个数据集上都优于所有其他模型，在所有三个数据集上都排名第一。
 
-![mst_table1](figs/mst_table1.png)
+<div align=center>
+<img src="figs/mst_table1.png" width="60%" height="60%"/>
+</div>
 
-<center style="color:#C0C0C0;text-decoration:underline">表10. 模型与 SOTA 模型在不同静态数据集上的性能比较，其中 Swin-T （BN） 是指用 BN 代替 LN 的自我实现的 ANN 基线。</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表10. 模型与 SOTA 模型在不同静态数据集上的性能比较，其中 Swin-T （BN） 是指用 BN 代替 LN 的自我实现的 ANN 基线。</div>
 
 ​	表 11 显示 MST 模型的性能显著优于其他 SOTA SNN 模型，在 CIFAR10-DVS、N-Caltech101 和 N-Car 上分别提高了 4.95%、7.68% 和 5.38%。Action Recognition 数据集由基于事件的摄像机捕获的一系列人类动作组成。
 
-<img src="figs/mst_table2.png" alt="mst_table2" style="zoom: 80%;" />
+<div align=center>
+<img src="figs/mst_table2.png" width="60%" height=60%"/>
+</div>
 
-<center style="color:#C0C0C0;text-decoration:underline">表11. 模型与 SOTA 模型在不同神经形态数据集上的性能比较。</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表11. 模型与 SOTA 模型在不同神经形态数据集上的性能比较。</div>
 
 ​	表 12 显示了 MST 、 ResNet-18 和 VGG-16 在 CIFAR-10 数据集上 0%、 50% 和 75% 掩码率的功耗和精度。RSM 方法应用于 MST 中的 SA 模块以及 ResNet-18 和 VGG-16 中的每个块。结果表明，RSM 方法对传输的尖峰数量有直接影响，进而降低了功耗。
 
-![mst_table3](figs/mst_table3.png)
+<div align=center>
+<img src="figs/mst_table3.png" width="60%" height="60%"/>
+</div>
 
-<center style="color:#C0C0C0;text-decoration:underline">表12. 在 CIFAR10 数据集上，掩码率分别为 0%、50% 和 75% 的模型之间的功耗和准确性比较。(· · ·)表中表示与未屏蔽模型（随机比率为 0%）相比的功耗/精度。</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表12. 在 CIFAR10 数据集上，掩码率分别为 0%、50% 和 75% 的模型之间的功耗和准确性比较。(· · ·)表中表示与未屏蔽模型（随机比率为 0%）相比的功耗/精度。</div>
 
-![mst_2](figs/mst_2.png)
+<div align=center>
+<img src="figs/mst_2.png" width="60%" height="60%"/>
+</div>
 
-<center style="color:#C0C0C0;text-decoration:underline">图10. 具有 0%、50% 和 75% 掩码率（从上到下）的 MST 模型在 5 个不同时间步长上的注意力图比较。</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图10. 具有 0%、50% 和 75% 掩码率（从上到下）的 MST 模型在 5 个不同时间步长上的注意力图比较。</div>
 
 ​	为了直观地了解不同掩码率对注意力图的影响，使用Spike激活图 （SAM） 方法比较了掩码率为 0%、50% 和 75% 的模型。如图 8 所示的结果表明，具有不同遮蔽率的模型在同一时间步长上集中在物体的相似区域，红色部分勾勒出物体的轮廓。与使用ScoreCAM方法的ANN模型进行比较后发现，两种模型都关注相似的关键信息。这些结果表明，所提出的 RSM 方法保留了模型中的感兴趣区域，有助于保持准确性。
 
@@ -532,13 +551,13 @@ $$
 
 ![image-20241126121412089](figs/sp_result1.png)
 
-<center style="color:#C0C0C0;text-decoration:underline">图11. SpikingResformer在 ImageNet 1K 的测试结果</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图11. SpikingResformer在 ImageNet 1K 的测试结果</div>
 
 ​	能耗是SNN模型的重要评价指标，我们测试了此模型的能耗为13.66 mJ，运行的结果截图如图 5 所示：
 
 ![image-20241126121533917](figs/sp_result2.png)
 
-<center style="color:#C0C0C0;text-decoration:underline">图12. SpikingResformer在 ImageNet 1K 的能耗测试</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图12. SpikingResformer在 ImageNet 1K 的能耗测试</div>
 
 ​	最后整理出复现指标和原论文指标的对比结果，整理如下：
 
@@ -547,7 +566,7 @@ $$
 | 复现结果 |   66.36   |    13.66    |   75.70   |   92.52   |
 |  原结果  |   66.34   |    13.68    |   75.85   |     -     |
 
-<center style="color:#C0C0C0;text-decoration:underline">表13. SpikingResformer的复现结果</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表13. SpikingResformer的复现结果</div>
 
 ​	从表 13 的结果看出，模型的复现指标与原结果基本保持一致，能耗比原结果低了0.02mJ，Ac c-1的精度比原结果低了0.15%。
 
@@ -564,7 +583,7 @@ $$
 | 论文结果                  |  76.32   |    -     |     -      |
 | 复现结果                  |  76.3200   |  92.7220   |     6.420     |
 
-<center style="color:#C0C0C0;text-decoration:underline">表14. Input为224时的Imagnet-1k测试结果</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表14. Input为224时的Imagnet-1k测试结果</div>
 
 
 3. Input放大到288大小时候的Imagnet-1k测试结果
@@ -574,34 +593,34 @@ $$
 | 论文结果                  |  77.07   |    -     |     6.09      |
 | 复现结果                  |  77.0720   |  93.1500   |     6.230      |
 
-<center style="color:#C0C0C0;text-decoration:underline">表15. Input为228时的Imagnet-1k测试结果</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表15. Input为228时的Imagnet-1k测试结果</div>
 
 #### 7.2.2 对文章中模型的复现
 由于训练资源限制，目前只能展示前12个epoch的结果。
 ![train_loss](figs/train_loss.jpg)
 
-<center style="color:#C0C0C0;text-decoration:underline">图11. 前12个epoch在Imagnet-1k上训练集损失</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图11. 前12个epoch在Imagnet-1k上训练集损失</div>
 
 
 ![eval_loss](figs/eval_loss.jpg)
 
-<center style="color:#C0C0C0;text-decoration:underline">图12. 前12个epoch在Imagnet-1k上验证集损失</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图12. 前12个epoch在Imagnet-1k上验证集损失</div>
 
 
 ![eval_top1](figs/eval_top1.jpg)
 
-<center style="color:#C0C0C0;text-decoration:underline">图13. 前12个epoch在Imagnet-1k验证集上ACC-1</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图13. 前12个epoch在Imagnet-1k验证集上ACC-1</div>
 
 
 
 ![eval_top5](figs/eval_top5.jpg)
 
-<center style="color:#C0C0C0;text-decoration:underline">图14. 前12个epoch在Imagnet-1k验证集上ACC-5</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图14. 前12个epoch在Imagnet-1k验证集上ACC-5</div>
 
 训练过程中的具体指标：
 ![figure](figs/figure.png)
 
-<center style="color:#C0C0C0;text-decoration:underline">图15. 训练过程中的具体指标</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图15. 训练过程中的具体指标</div>
 
 训练epoch不足的情况下，模型的性能与文章中的结果有些差距。
 
@@ -611,11 +630,11 @@ $$
 
 ![Resformer_reproduce](figs/Resformer_reproduce.png)
 
-<center style="color:#C0C0C0;text-decoration:underline">图16. SpikingResformer-s在Imagenet1K复现训练曲线</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图16. SpikingResformer-s在Imagenet1K复现训练曲线</div>
 
 ![image-20241126173149566](figs/resformer_metric.png)
 
-<center style="color:#C0C0C0;text-decoration:underline">图17. SpikingResformer-s在Imagenet1K复现结果截图</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">图17. SpikingResformer-s在Imagenet1K复现结果截图</div>
 
 ​	第10个epoch的结果：Test loss: 2.32, Acc@1: 51.08%, Acc@5: 76.06%
 
@@ -654,7 +673,7 @@ yacs==0.1.8
 | masking_rate=0.75（复现） |  77.12   |  93.53   |     28.3      |
 | masking_rate=0.75（论文） |    -     |    -     |     28.5      |
 
-<center style="color:#C0C0C0;text-decoration:underline">表16. masking rate分别为0/0.75下的Imagenet评测结果</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">表16. masking rate分别为0/0.75下的Imagenet评测结果</div>
 
 
 ​	复现结果得到了与论文中相似的结果，我们可以知道，当掩码比例增加时，模型的准确度会下降。这是因为掩码比例的提高意味着更多的输入Spike被随机屏蔽，从而减少了参与计算的有效信息。实验表明，在 ImageNet 数据集上，随着掩码比例从较低值逐渐增加，模型的准确度逐渐降低。
