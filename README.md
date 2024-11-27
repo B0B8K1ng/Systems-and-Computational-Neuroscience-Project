@@ -438,6 +438,9 @@ $$
 
 ## 七、论文复现部分
 
+​	本项目复现和训练的所有权重文件可以通过如下链接下载：
+​	链接: https://pan.baidu.com/s/1_P9rIFS68RuNe1PdhJi12A 提取码: jssj 
+
 ### 7.1 Spikingformer复现
 
 #### 7.1.1 环境配置
