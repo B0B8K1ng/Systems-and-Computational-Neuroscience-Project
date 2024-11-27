@@ -289,7 +289,7 @@ $$
 
 
 
-在公式 (10) 中， $X\in\{0, 1\}^{T\times p\times m}$ 和 $Y\in\{0, 1\}^{T\times m\times q}$ 代表双脉冲输入，$T$时时间步， $p, m, q$ 表示对应维度， $f(\cdot)$ 是一个对于$Y$的线性变换， $W\in \mathbb{R}^{q\times q}$ 是权重矩阵。在公式 (11) 中，$Y\in\{0, 1\}^{T\times q\times m}$， $W\in \mathbb{R}^{m\times m}$ 。
+在公式 (10) 中， $X\in\{0, 1\}^{T\times p\times m}$ 和 $Y\in\{0, 1\}^{T\times m\times q}$ 代表双脉冲输入， $T$  是时间步， $p, m, q$ 表示对应维度， $f(\cdot)$ 是一个对于 $Y$ 的线性变换， $W\in \mathbb{R}^{q\times q}$ 是权重矩阵。在公式 (11) 中，$Y\in\{0, 1\}^{T\times q\times m}$， $W\in \mathbb{R}^{m\times m}$ 。
 
 ​	基于DST，能够进一步计算DSSA的注意力地图：
 
