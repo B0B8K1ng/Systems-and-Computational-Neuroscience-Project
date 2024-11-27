@@ -214,7 +214,7 @@ $$
 </div>
 
 <div align="center" style="color:#C0C0C0; text-decoration: underline;">
-  表3. Spikingformer在CIFAR 10/100数据集上的对比结果
+  表3. Spikingformer在CIFAR 10-DVS/DVS128 Gesture数据集上的对比结果
 </div>
 
 
@@ -597,28 +597,38 @@ $$
 
 #### 7.2.2 对文章中模型的复现
 由于训练资源限制，目前只能展示前12个epoch的结果。
-![train_loss](figs/train_loss.jpg)
+<div align=center>
+<img src="figs/train_loss.jpg"/>
+</div>
 
 <div align="center" style="color:#C0C0C0; text-decoration: underline;">图11. 前12个epoch在Imagnet-1k上训练集损失</div>
 
 
-![eval_loss](figs/eval_loss.jpg)
+<div align=center>
+<img src="figs/eval_loss.jpg"/>
+</div>
 
 <div align="center" style="color:#C0C0C0; text-decoration: underline;">图12. 前12个epoch在Imagnet-1k上验证集损失</div>
 
 
-![eval_top1](figs/eval_top1.jpg)
+<div align=center>
+<img src="figs/eval_top1.jpg"/>
+</div>
 
 <div align="center" style="color:#C0C0C0; text-decoration: underline;">图13. 前12个epoch在Imagnet-1k验证集上ACC-1</div>
 
 
 
-![eval_top5](figs/eval_top5.jpg)
+<div align=center>
+<img src="figs/eval_top5.jpg"/>
+</div>
 
 <div align="center" style="color:#C0C0C0; text-decoration: underline;">图14. 前12个epoch在Imagnet-1k验证集上ACC-5</div>
 
 训练过程中的具体指标：
-![figure](figs/figure.png)
+<div align=center>
+<img src="figs/figure.png"/>
+</div>
 
 <div align="center" style="color:#C0C0C0; text-decoration: underline;">图15. 训练过程中的具体指标</div>
 
