@@ -101,9 +101,13 @@ Conv2d(in_channels, out_channels) -> BatchNorm2d(out_channels) -> IFNode(surroga
 ​	假设输入图像为 $I \in \mathbb{R}^{H \times W \times C}$ ，通过 Spiking Tokenizer 处理后得到脉冲特征表示为 $X\in \mathbb{R}^{T \times N \times D}$，其中  $H$ 和  $W$  是输入图像的高和宽， $C$  是通道数， $T$  是脉冲的时间步长， $N$  是序列长度， $D$  是特征维度。
 
 ​	脉冲化卷积过程的公式如下： 
+
+
 $$
 I_i=ConvBN(SN(I))
 $$
+
+
 或在进行降采样时：
 $$
 I_i=ConvBN(MP(SN(I)))
@@ -124,7 +128,9 @@ $$
 
 ##### 1）Spiking Multi-head Self-Attention (SSA)
 
-​	输入序列 $X\in \mathbb{R}^{T\times N\times D}$，其脉冲自注意力计算如下：
+​	输入序列  $X\in \mathbb{R}^{T\times N\times D}$ ，其脉冲自注意力计算如下：
+
+
 $$
 Q,K,V=SN_Q(ConvBN_Q(X)), SN_K(ConvBN_K(X)), SN_V(ConvBN_V(X)
 $$
@@ -133,7 +139,7 @@ $$
 SSA(Q, K, V)=ConvBN(SN(QK^TV \cdot s))
 $$
 
-其中$Q, K, V$为查询、键、值矩阵，维度为$\mathbb{R}^{T\times N\times D}$ ，$s$为缩放因子。
+其中 $Q, K, V$ 为查询、键、值矩阵，维度为 $\mathbb{R}^{T\times N\times D}$  ， $s$ 为缩放因子。
 
 ##### 2）Spiking Feed-Forward Network (SMLP)：
 
@@ -164,19 +170,19 @@ $$
 
 ​	在静态数据集（如ImageNet、CIFAR10、CIFAR100）和神经形态数据集（如CIFAR10-DVS和DVS128 Gesture）上验证了Spikingformer的性能。
 
-​	在ImageNet 1K数据集上训练时，设定输入的尺寸为$224\times224$，选择AdamW为优化器，训练300个epochs，实验结果如表 1 所示。
+​	在ImageNet 1K数据集上训练时，设定输入的尺寸为 $224\times224$ ，选择AdamW为优化器，训练300个epochs，实验结果如表 1 所示。
 
 <img src="figs/table_spikingformer.png" alt="image-20241125205510197" style="zoom:50%;" />
 
 <center style="color:#C0C0C0;text-decoration:underline">表1. Spikingformer在ImageNet-1K数据集上的对比结果</center>
 
-​	在CIFAR10/CIFAR100数据集上训练时，设定输入尺寸为$32\times32$，batch大小选择为64。实验的结果如表 2 所示。
+​	在CIFAR10/CIFAR100数据集上训练时，设定输入尺寸为 $32\times32$ ，batch大小选择为64。实验的结果如表 2 所示。
 
 <img src="figs/table2_spikingformer.png" alt="image-20241126100435798" style="zoom:50%;" />
 
 <center style="color:#C0C0C0;text-decoration:underline">表2. Spikingformer在CIFAR 10/100数据集上的对比结果</center>
 
-​	此外还在CIFAR10-DVS和DVS128 Gesture数据集上进行了分类任务的测试，选定的输入尺寸都是$128\times 128$，实验结果如表 3 所示。
+​	此外还在CIFAR10-DVS和DVS128 Gesture数据集上进行了分类任务的测试，选定的输入尺寸都是 $128\times 128$ ，实验结果如表 3 所示。
 
 <img src="figs/table3_spikingformer.png" alt="image-20241126100616386" style="zoom:50%;" />
 
@@ -265,7 +271,7 @@ $$
 DST_T(X, Y; f(\cdot))=Xf(Y)^T=XW^TY^T.
 $$
 
-在公式 (10) 中，$X\in\{0, 1\}^{T\times p\times m}$和$Y\in\{0, 1\}^{T\times m\times q}$代表双脉冲输入，$T$时时间步，$p, m, q$表示对应维度，$f(\cdot)$是一个对于$Y$的线性变换，$W\in \mathbb{R}^{q\times q}$是权重矩阵。在公式 (11) 中，$Y\in\{0, 1\}^{T\times q\times m}$，$W\in \mathbb{R}^{m\times m}$。
+在公式 (10) 中， $X\in\{0, 1\}^{T\times p\times m}$ 和 $Y\in\{0, 1\}^{T\times m\times q}$ 代表双脉冲输入，$T$时时间步， $p, m, q$ 表示对应维度， $f(\cdot)$ 是一个对于$Y$的线性变换， $W\in \mathbb{R}^{q\times q}$ 是权重矩阵。在公式 (11) 中，$Y\in\{0, 1\}^{T\times q\times m}$， $W\in \mathbb{R}^{m\times m}$ 。
 
 ​	基于DST，能够进一步计算DSSA的注意力地图：
 $$
@@ -276,13 +282,13 @@ $$
 f(X)=BN(Conv_p(X)),
 $$
 
-其中$X\in \{0,1\}^{T\times HW\times d}$是脉冲输入，$H$和$W$分别是输入的高度和宽度，$d$表示编码的embedding的维度，$BN(\cdot)$是指批归一化层$Conv_p(\cdot)$表示步长为$p$的一个$p\times p$的卷积，$c_1$是尺度因子。
+其中 $X\in \{0,1\}^{T\times HW\times d}$ 是脉冲输入， $H$ 和 $W$ 分别是输入的高度和宽度， $d$ 表示编码的embedding的维度， $BN(\cdot)$ 是指批归一化层 $Conv_p(\cdot)$ 表示步长为 $p$ 的一个 $p\times p$ 的卷积， $c_1$ 是尺度因子。
 
 ​	进一步的，使用脉冲注意力地图，DSSA可以表达为：
 $$
 DSSA(X)=SN(DST(AttnMap(X), X; f(\cdot))*c_2),
 $$
-其中，$c_2$是尺度因子。
+其中， $c_2$ 是尺度因子。
 
 #### 5.2.2 Spiking Resformer Block
 
@@ -294,11 +300,11 @@ $$
 $$
 MHDSSA(X)=BN(Conv_1([DSSA_i(SN(X))]_{i=1}^h))
 $$
-其中 $[...]$ 表示concat拼接操作，$Conv_1$表示点向卷积。
+其中 $[...]$ 表示concat拼接操作， $Conv_1$ 表示点向卷积。
 
 2）**组向的脉冲前馈网络**
 
-​	脉冲前馈网络（spiking feed-forward network, SFFN）由两个带有批归一化的线性层和脉冲神经激活组成。基于SFFN，在两个线性层之间插入$3\times 3$的带有残差连接的卷积层，使得SFFN能够提取局部特征。为了减少参数量和计算量，使用组向卷积并将每64个channels设为1个组。组向脉冲前向网络表达如下：
+​	脉冲前馈网络（spiking feed-forward network, SFFN）由两个带有批归一化的线性层和脉冲神经激活组成。基于SFFN，在两个线性层之间插入 $3\times 3$ 的带有残差连接的卷积层，使得SFFN能够提取局部特征。为了减少参数量和计算量，使用组向卷积并将每64个channels设为1个组。组向脉冲前向网络表达如下：
 $$
 FFL_i(X)=BN(Conv_1(SN(X))), i=1,2
 $$
@@ -311,7 +317,7 @@ $$
 GWSFFN(X)=FFL_2(GWL(FFL_1(X))).
 $$
 
-其中 $FFL_i(\cdot), i=1,2$ 表示前馈层，$Conv_1(\cdot)$是点向卷积，$GWL(\cdot)$是组向卷积层，$GWConv(\cdot)$表示组向卷积。
+其中  $FFL_i(\cdot), i=1,2$  表示前馈层， $Conv_1(\cdot)$ 是点向卷积， $GWL(\cdot)$ 是组向卷积层， $GWConv(\cdot)$ 表示组向卷积。
 
 ​	基于以上的MHDSSA模块和GWSFFN模块，spiking resformer block可以表达为：
 $$
@@ -322,7 +328,7 @@ $$
 X_{i+1}=GWSFFN(Y_i)+Y_i
 $$
 
-其中 $Y_i$ 表示MHDSSA模块在第 i 个spiking resformer block中输出的特征。
+其中  $Y_i$  表示MHDSSA模块在第 i 个spiking resformer block中输出的特征。
 
 ### 5.3 SpikingResformer结果展示与评价
 
