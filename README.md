@@ -98,9 +98,9 @@ Conv2d(in_channels, out_channels) -> BatchNorm2d(out_channels) -> IFNode(surroga
 1. **空间降维**：通过脉冲卷积层 (Spiking Conv Layer) 提取局部空间特征。
 2. **序列化**：将降维后的特征映射到序列表示。
 
-​	假设输入图像为 $I \in \mathbb{R}^{H \times W \times C}$ ，通过 Spiking Tokenizer 处理后得到脉冲特征表示为 $X\in \mathbb{R}^{T \times N \times D}$，其中 $H$和 $W$ 是输入图像的高和宽，$C$ 是通道数，$T$ 是脉冲的时间步长，$N$ 是序列长度，$D$ 是特征维度。
+​	假设输入图像为 $I \in \mathbb{R}^{H \times W \times C}$ ，通过 Spiking Tokenizer 处理后得到脉冲特征表示为 $X\in \mathbb{R}^{T \times N \times D}$，其中  $H$ 和  $W$  是输入图像的高和宽， $C$  是通道数， $T$  是脉冲的时间步长， $N$  是序列长度， $D$  是特征维度。
 
-​	脉冲化卷积过程的公式如下：
+​	脉冲化卷积过程的公式如下： 
 $$
 I_i=ConvBN(SN(I))
 $$
@@ -108,7 +108,7 @@ $$
 $$
 I_i=ConvBN(MP(SN(I)))
 $$
-其中$SN$表示多步脉冲神经元，$ConvBN$表示包含2D卷积操作和批归一化的层，$MP$为最大池化操作。
+其中 $SN$ 表示多步脉冲神经元， $ConvBN$ 表示包含2D卷积操作和批归一化的层， $MP$ 为最大池化操作。
 
 ​	最终，经过Spiking Tokenizer的输入被处理为以下形式：
 $$
