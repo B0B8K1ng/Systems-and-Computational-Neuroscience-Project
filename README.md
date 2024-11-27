@@ -55,11 +55,15 @@ Conv2d(in_channels, out_channels) -> BatchNorm2d(out_channels) -> IFNode(surroga
 
 <center style="color:#C0C0C0;text-decoration:underline">图1. CIFAR-10 数据集下SNN分类器训练损失</center>
 
-![测试集accuracy](figs/figure2_1.jpg)
+<div align=center>
+<img src="figs/figure2_1.jpg" >
+</div>
 
 <center style="color:#C0C0C0;text-decoration:underline">图2. CIFAR-10 数据集下SNN分类器测试准确率</center>
 
-![测试集loss](figs/figure2_2.jpg)
+<div align=center>
+<img src="figs/figure2_2.jpg" >
+</div>
 <center style="color:#C0C0C0;text-decoration:underline">图3. CIFAR-10 数据集下SNN分类器测试损失</center>
 
 
@@ -187,21 +191,29 @@ $$
 
 ​	在ImageNet 1K数据集上训练时，设定输入的尺寸为 $224\times224$ ，选择AdamW为优化器，训练300个epochs，实验结果如表 1 所示。
 
-<img src="figs/table_spikingformer.png" alt="image-20241125205510197" style="zoom:50%;" />
+<div align=center>
+<img src="figs/table_spikingformer.png"/>
+</div>
 
 <center style="color:#C0C0C0;text-decoration:underline">表1. Spikingformer在ImageNet-1K数据集上的对比结果</center>
 
 ​	在CIFAR10/CIFAR100数据集上训练时，设定输入尺寸为 $32\times32$ ，batch大小选择为64。实验的结果如表 2 所示。
 
-<img src="figs/table2_spikingformer.png" alt="image-20241126100435798" style="zoom:50%;" />
+<div align=center>
+<img src="figs/table2_spikingformer.png"/>
+</div>
 
 <center style="color:#C0C0C0;text-decoration:underline">表2. Spikingformer在CIFAR 10/100数据集上的对比结果</center>
 
 ​	此外还在CIFAR10-DVS和DVS128 Gesture数据集上进行了分类任务的测试，选定的输入尺寸都是 $128\times 128$ ，实验结果如表 3 所示。
 
-<img src="figs/table3_spikingformer.png" alt="image-20241126100616386" style="zoom:50%;" />
+<div align=center>
+<img src="figs/table3_spikingformer.png"/>
+</div>
 
-<center style="color:#C0C0C0;text-decoration:underline">表3. Spikingformer在CIFAR 10/100数据集上的对比结果</center>
+<div align="center" style="color:#C0C0C0; text-decoration: underline;">
+  表3. Spikingformer在CIFAR 10/100数据集上的对比结果
+</div>
 
 
 
