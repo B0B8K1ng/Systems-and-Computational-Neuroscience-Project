@@ -200,6 +200,8 @@ $$
 
 <center style="color:#C0C0C0;text-decoration:underline">表3. Spikingformer在CIFAR 10/100数据集上的对比结果</center>
 
+
+
 ​	以上所有实验结果表明，Spikingformer不仅有效避免了Spikformer中的非脉冲计算，还显著降低了能耗（在ImageNet上减少了57.34%），同时在所有数据集上的分类性能均优于现有模型。例如，在ImageNet和CIFAR100数据集上，Spikingformer分别相较Spikformer提升了1.04%和1.00%的分类准确率。
 
 ​	Spikingformer的提出不仅为纯事件驱动的变换器式SNN奠定了基础，也在SNN模型设计中引入了全新的残差学习方法，为进一步优化深度SNN提供了新的方向。
